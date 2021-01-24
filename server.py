@@ -10,7 +10,7 @@ from scan import DocScanner
 from parser_1 import parse_image
 
 app = Flask(__name__)
-scanner = DocScanner
+scanner = DocScanner()
 
 
 @app.route("/api/test", methods=["POST"])
@@ -23,8 +23,9 @@ def process_img():
     nparr = np.frombuffer(imgString, np.uint8)
 
     img = cv2.imdecode(nparr, cv2.IMREAD_ANYCOLOR)
-    # print(img, type(img))
-    img_cv2 = scanner.scan(img)
+    img_bgr = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+    print(img_bgr.shape)
+    img_cv2 = scanner.scan(img_bgr)
 
     response = {"message": parse_image(img_cv2)}
 

@@ -312,14 +312,13 @@ class DocScanner(object):
         new_points = np.array([[p] for p in new_points], dtype="int32")
         return new_points.reshape(4, 2)
 
-    def scan(self, img):
-        print(img, type(img))
+    def scan(self, image_path):
         RESCALED_HEIGHT = 500.0
         OUTPUT_DIR = "output"
 
         # load the image and compute the ratio of the old height
         # to the new height, clone it, and resize it
-        image = img  # cv2.imread(image_path)
+        image = cv2.imread(image_path)
 
         assert image is not None
 
@@ -349,9 +348,9 @@ class DocScanner(object):
         )
 
         # save the transformed image
-        # basename = os.path.basename(image_path)
-        # cv2.imwrite(OUTPUT_DIR + "/" + basename, thresh)
-        # print("Proccessed " + basename)
+        basename = os.path.basename(image_path)
+        cv2.imwrite(OUTPUT_DIR + "/" + basename, thresh)
+        print("Proccessed " + basename)
 
 
 if __name__ == "__main__":
@@ -378,7 +377,7 @@ if __name__ == "__main__":
 
     # Scan single image specified by command line argument --image <IMAGE_PATH>
     if im_file_path:
-        scanner.scan(cv2.imread(im_file_path))
+        scanner.scan(im_file_path)
 
     # Scan all valid images in directory specified by command line argument --images <IMAGE_DIR>
     else:
