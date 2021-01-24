@@ -7,11 +7,11 @@
 
 # Scanned images will be output to directory named 'output'
 
-from pyimagesearch import transform
-from pyimagesearch import imutils
+from .pyimagesearch import transform
+from .pyimagesearch import imutils
 from scipy.spatial import distance as dist
 from matplotlib.patches import Polygon
-import polygon_interacter as poly_i
+from . import polygon_interacter as poly_i
 import numpy as np
 import matplotlib.pyplot as plt
 import itertools
