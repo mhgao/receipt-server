@@ -7,7 +7,7 @@ import base64
 import sys
 
 from scan import DocScanner
-from parser_1 import parse_image
+from image_parser import parse_image
 
 app = Flask(__name__)
 scanner = DocScanner()
