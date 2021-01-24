@@ -1,10 +1,8 @@
 from flask import Flask, request, Response
-
 import numpy as np
 import json
 import cv2
 import base64
-import sys
 
 from image_scanner.scan import DocScanner
 from image_parser import parse_image

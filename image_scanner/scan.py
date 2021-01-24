@@ -7,11 +7,11 @@
 
 # Scanned images will be output to directory named 'output'
 
-from .pyimagesearch import transform
-from .pyimagesearch import imutils
+# Third party or native imports
+import argparse
+import os
 from scipy.spatial import distance as dist
 from matplotlib.patches import Polygon
-from . import polygon_interacter as poly_i
 import numpy as np
 import matplotlib.pyplot as plt
 import itertools
@@ -19,8 +19,11 @@ import math
 import cv2
 from pylsd.lsd import lsd
 
-import argparse
-import os
+# Local imports
+from .pyimagesearch import transform
+from .pyimagesearch import imutils
+from . import polygon_interacter as poly_i
+
 
 
 class DocScanner(object):
