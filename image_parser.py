@@ -3,7 +3,10 @@ import pytesseract
 import re
 from difflib import get_close_matches
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# Only run this pytesseract setup on Windows machines
+import os
+if os.name == 'nt': # Windows
+    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 
 def parse_image(img):
