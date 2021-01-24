@@ -18,13 +18,11 @@ def process_img():
     r = request
 
     imgString = base64.b64decode(r.data)
-    # print(type(r.data))
 
     nparr = np.frombuffer(imgString, np.uint8)
 
     img = cv2.imdecode(nparr, cv2.IMREAD_ANYCOLOR)
-    # img_bgr = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
-    # print(img_bgr.shape)
+
     img_cv2 = scanner.scan(img)
 
     response = {"message": parse_image(img_cv2)}

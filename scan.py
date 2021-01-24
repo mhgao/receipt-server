@@ -218,8 +218,6 @@ class DocScanner(object):
         CANNY = 84
         HOUGH = 25
 
-        print("rescaled_image", rescaled_image.shape)
-
         IM_HEIGHT, IM_WIDTH, _ = rescaled_image.shape
 
         # convert the image to grayscale and blur it slightly
@@ -313,7 +311,6 @@ class DocScanner(object):
         return new_points.reshape(4, 2)
 
     def scan(self, img):
-        print(img, type(img))
         RESCALED_HEIGHT = 500.0
         OUTPUT_DIR = "output"
 
