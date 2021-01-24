@@ -3,6 +3,8 @@ import pytesseract
 import re
 from difflib import get_close_matches
 
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
 
 def parse_image(img):
     def read_config(config="config.yml"):
@@ -12,7 +14,6 @@ def parse_image(img):
         :return: ObjectView
             Parsed config file
         """
-
 
     img_data = pytesseract.image_to_string(img)
 
@@ -26,7 +27,7 @@ def parse_image(img):
     def find_date():
         date_pattern = r"(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/\d\d"
         for line in img_lines:
-        # print(line)
+            # print(line)
             match = re.match(date_pattern, line)
             if match:
                 return match.group(0)
@@ -39,7 +40,6 @@ def parse_image(img):
     # find market_str
     market_str = None
     accuracy = 0.6
-
 
     def find_market():
         for market in MARKETS:
@@ -57,7 +57,7 @@ def parse_image(img):
 
     # accuracy = 0.6
 
-    sum_pattern = '\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2}'
+    sum_pattern = "\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2}"
 
     def find_sum():
         for sum_key in SUM_KEYS:
@@ -76,6 +76,7 @@ def parse_image(img):
     sum_str = find_sum()
 
     return (date_str, market_str, sum_str)
+
 
 # img = cv2.imread('data/walmart2.jpg')
 # (date, market, sum) = img_to_json(img)
