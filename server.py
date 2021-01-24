@@ -8,11 +8,11 @@ from image_scanner.scan import DocScanner
 from image_parser import parse_image
 
 app = Flask(__name__)
-scanner = DocScanner()
 
 
 @app.route("/api/test", methods=["POST"])
 def process_img():
+
     r = request
 
     imgString = base64.b64decode(r.data)
@@ -21,9 +21,11 @@ def process_img():
 
     img = cv2.imdecode(nparr, cv2.IMREAD_ANYCOLOR)
 
-    img_cv2 = scanner.scan(img)
+    scanner = DocScanner()
+    img_scanned = scanner.scan(img)
+    parsed_string = parse_image(img_scanned)
 
-    response = {"message": parse_image(img_cv2)}
+    response = {"message": parsed_string}
 
     # Serialize into JSON format
     response_json = json.dumps(response)

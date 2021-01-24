@@ -7,13 +7,6 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 
 
 def parse_image(img):
-    def read_config(config="config.yml"):
-        """
-        :param file: str
-            Name of file to read
-        :return: ObjectView
-            Parsed config file
-        """
 
     img_data = pytesseract.image_to_string(img)
 
