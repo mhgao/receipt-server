@@ -17,8 +17,6 @@ def parse_image(img):
 
     img_data = pytesseract.image_to_string(img)
 
-    # print(img_data)
-
     img_lines = img_data.splitlines()
 
     # turn to lower case and remove empty lines

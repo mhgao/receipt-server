@@ -348,6 +348,7 @@ class DocScanner(object):
             sharpen, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 15
         )
 
+        return thresh
         # save the transformed image
         # basename = os.path.basename(image_path)
         # cv2.imwrite(OUTPUT_DIR + "/" + basename, thresh)
