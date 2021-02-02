@@ -10,7 +10,7 @@ from image_parser import parse_image
 app = Flask(__name__)
 
 
-@app.route("/api/test", methods=["POST"])
+@app.route("/api", methods=["POST"])
 def process_img():
 
     r = request
